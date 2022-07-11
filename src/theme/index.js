@@ -4,4 +4,4 @@ import { fontsize, fontweight, fonttype } from './fonts';
 
 const font = { fontsize, fontweight, fonttype };
 
-export { metrics, colors, font };
+export default { metrics, colors, font };

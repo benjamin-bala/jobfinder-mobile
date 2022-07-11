@@ -1,13 +1,8 @@
-import { useWindowDimensions } from 'react-native';
+import { Dimensions } from 'react-native';
 
-const { width, height } = useWindowDimensions();
+const { width, height } = Dimensions.get('window');
 
-interface metricsInterface {
-  readonly screenWidth: number;
-  readonly screenHeight: number;
-}
-
-export const metrics: metricsInterface = {
+export const metrics = {
   screenWidth: width < height ? width : height,
   screenHeight: width < height ? height : width,
 };

@@ -1,12 +1,22 @@
+import { useContext } from 'react';
+import { Context } from '../../Context';
 import { StyleSheet, Text } from 'react-native';
-import React from 'react';
 
-export default function Paragraph() {
+export default function Paragraph({ fontSize, fontFamily, color, text }) {
+  const { font, colors } = useContext(Context);
+
+  // console.log(themeProperties);
+
   const textStyle = StyleSheet.create({
-    fontSize: props.fontSize,
-    fontFamily: props.fontFamily,
-    color: props.color,
+    fontSize: fontSize ? fontSize : font.fontsize.font16,
+    fontFamily:
+      fontFamily === 'bold'
+        ? font.fonttype.bold
+        : fontFamily === 'semibold'
+        ? font.fonttype.semibold
+        : font.fonttype.regular || null,
+    color: color ? color : colors.black1,
   });
 
-  return <Text style={textStyle}>{props.text}</Text>;
+  return <Text style={textStyle}>{text}</Text>;
 }

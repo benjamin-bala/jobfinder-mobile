@@ -1,4 +1,4 @@
-import StoreContext from './src/Context/StoreContext';
+import StoreContext from './src/context/StoreContext';
 import Screens from './src/Screens/index';
 import LoadingScreen from './src/Screens/LoadingScreen';
 

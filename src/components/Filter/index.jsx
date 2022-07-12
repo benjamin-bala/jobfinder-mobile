@@ -1,6 +1,6 @@
 import { useContext, useState } from 'react';
 import { View, TouchableWithoutFeedback } from 'react-native';
-import { Context } from '../../Context';
+import { Context } from '../../context';
 import { uuid } from '../../utils/uuid';
 import Paragraph from '../Paragraph';
 

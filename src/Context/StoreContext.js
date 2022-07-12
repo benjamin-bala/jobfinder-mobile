@@ -13,8 +13,6 @@ const client = new ApolloClient({
   cache: new InMemoryCache(),
 });
 
-console.log(process.env);
-
 export default function StoreContext({ children }) {
   const [state, dispatch] = useReducer(reducer, initialState);
 

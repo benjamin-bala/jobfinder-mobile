@@ -1,5 +1,5 @@
 import { useContext } from 'react';
-import { Context } from '../../Context';
+import { Context } from '../../context';
 import { StyleSheet, Text } from 'react-native';
 
 export default function Paragraph({

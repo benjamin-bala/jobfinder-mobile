@@ -4,7 +4,7 @@ import SearchBox from '../../components/Searchbox';
 import Category from '../../components/Category';
 import Filter from '../../components/Filter';
 import { JobsApi } from '../../api';
-import { Context } from '../../Context';
+import { Context } from '../../context';
 import Skeleton from '../Skeleton';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import Paragraph from '../../components/Paragraph';

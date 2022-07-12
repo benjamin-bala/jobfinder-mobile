@@ -2,7 +2,7 @@ import { StatusBar, View, TouchableHighlight } from 'react-native';
 import { useContext } from 'react';
 import { FontAwesome5 } from '@expo/vector-icons';
 import Paragraph from '../../components/Paragraph';
-import { Context } from '../../Context';
+import { Context } from '../../context';
 
 export default function ErrorScreen(props) {
   const { colors, font } = useContext(Context);

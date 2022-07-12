@@ -1,6 +1,6 @@
 import { StatusBar, View } from 'react-native';
 import { useContext } from 'react';
-import { Context } from '../../Context';
+import { Context } from '../../context';
 
 export default function Skeleton() {
   const { colors, metrics } = useContext(Context);

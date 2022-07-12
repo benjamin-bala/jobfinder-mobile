@@ -1,7 +1,7 @@
 import { useContext } from 'react';
 import { View } from 'react-native';
 import Paragraph from '../Paragraph';
-import { Context } from '../../Context';
+import { Context } from '../../context';
 import Card from '../Card';
 import { uuid } from '../../utils/uuid';
 

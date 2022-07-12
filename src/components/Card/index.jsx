@@ -6,7 +6,7 @@ import {
   TouchableWithoutFeedback,
 } from 'react-native';
 import Paragraph from '../Paragraph';
-import { Context } from '../../Context';
+import { Context } from '../../context';
 import { Feather } from '@expo/vector-icons';
 import * as Linking from 'expo-linking';
 

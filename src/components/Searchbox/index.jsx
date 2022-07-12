@@ -1,11 +1,11 @@
 import { useState, useContext } from 'react';
 import { View, TextInput, StyleSheet, StatusBar } from 'react-native';
 import { Feather } from '@expo/vector-icons';
-import { Context } from '../../Context';
+import { Context } from '../../context';
 import Paragraph from '../Paragraph';
 
 export default function SearchBox() {
-  const { colors, font, metrics, state, dispatch } = useContext(Context);
+  const { colors, font, metrics, dispatch } = useContext(Context);
 
   const [text, setText] = useState('');
 
@@ -40,8 +40,6 @@ export default function SearchBox() {
       paddingHorizontal: '2%',
     },
   });
-
-  console.log('search component', state.search);
 
   return (
     <View style={searchBoxStyle.header}>

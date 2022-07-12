@@ -6,9 +6,12 @@ import Filter from '../../components/Filter';
 import { JobsApi } from '../../api';
 import { Context } from '../../Context';
 import Skeleton from '../Skeleton';
+import { MaterialCommunityIcons } from '@expo/vector-icons';
+import Paragraph from '../../components/Paragraph';
+import ErrorScreen from '../Error';
 
 export default function Home() {
-  const { loading, error, data } = JobsApi();
+  const { loading, error, data, refetch } = JobsApi();
   const { dispatch, state } = useContext(Context);
 
   useEffect(() => {
@@ -19,7 +22,7 @@ export default function Home() {
 
   if (loading) return <Skeleton />;
 
-  if (error) return <Text>Error</Text>;
+  if (error) return <ErrorScreen event={refetch} />;
 
   const filteredData =
     state?.jobs &&
@@ -32,13 +35,31 @@ export default function Home() {
     });
 
   return (
-    <ScrollView>
+    <ScrollView style={{ backgroundColor: '#fafafa' }}>
       <KeyboardAvoidingView>
-        <View style={{ backgroundColor: '#fafafa' }}>
+        <View>
           <SearchBox />
           <View style={{ paddingHorizontal: 22 }}>
             <Filter />
             {filteredData && <Category data={filteredData} />}
+            {filteredData && filteredData.length <= 0 ? (
+              <View
+                style={{
+                  justifyContent: 'center',
+                  alignItems: 'center',
+                }}
+              >
+                <MaterialCommunityIcons
+                  name='message-text-outline'
+                  size={30}
+                  color='black'
+                />
+                <Paragraph
+                  style={{ marginVertical: 15 }}
+                  text={'Sorry, we could not find your dream job.'}
+                />
+              </View>
+            ) : null}
           </View>
         </View>
       </KeyboardAvoidingView>

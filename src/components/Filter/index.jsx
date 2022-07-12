@@ -73,14 +73,10 @@ export default function Filter() {
                 borderRadius: 6,
               }}
             >
-              <Paragraph
-                text={filterItem.symbol}
-                fontSize={font.fontsize.font16}
-              />
+              <Paragraph text={filterItem.symbol} />
               <Paragraph
                 text={filterItem.name}
                 fontSize={font.fontsize.font14}
-                fontFamily={'semibold'}
                 color={
                   state.search === filterItem.name
                     ? colors.white

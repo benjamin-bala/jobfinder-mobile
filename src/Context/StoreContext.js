@@ -3,14 +3,17 @@ import { reducer, initialState } from '../store';
 import { ApolloClient, InMemoryCache, ApolloProvider } from '@apollo/client';
 import { Context } from './index';
 import { font, metrics, colors } from '../theme';
+import { ADMIN_SECRET } from '../env';
 
 const client = new ApolloClient({
   uri: 'https://useful-haddock-65.hasura.app/v1/graphql',
   headers: {
-    'x-hasura-admin-secret': process.env[ADMIN_SECRET],
+    'x-hasura-admin-secret': ADMIN_SECRET,
   },
   cache: new InMemoryCache(),
 });
+
+console.log(process.env);
 
 export default function StoreContext({ children }) {
   const [state, dispatch] = useReducer(reducer, initialState);

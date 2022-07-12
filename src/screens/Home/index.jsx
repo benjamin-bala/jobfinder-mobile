@@ -5,6 +5,7 @@ import Category from '../../components/Category';
 import Filter from '../../components/Filter';
 import { JobsApi } from '../../api';
 import { Context } from '../../Context';
+import Skeleton from '../Skeleton';
 
 export default function Home() {
   const { loading, error, data } = JobsApi();
@@ -16,7 +17,7 @@ export default function Home() {
     }
   }, [loading, data, dispatch]);
 
-  if (loading) return <Text>Loading</Text>;
+  if (loading) return <Skeleton />;
 
   if (error) return <Text>Error</Text>;
 

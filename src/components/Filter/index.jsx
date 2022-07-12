@@ -64,7 +64,9 @@ export default function Filter() {
                 alignItems: 'center',
                 marginVertical: '1%',
                 backgroundColor:
-                  value === filterItem.name ? colors.primary : 'transparent',
+                  state.search === filterItem.name
+                    ? colors.primary
+                    : 'transparent',
                 alignSelf: 'flex-start',
                 paddingHorizontal: '3%',
                 paddingVertical: '1%',
@@ -79,7 +81,11 @@ export default function Filter() {
                 text={filterItem.name}
                 fontSize={font.fontsize.font14}
                 fontFamily={'semibold'}
-                color={value === filterItem.name ? colors.white : colors.black1}
+                color={
+                  state.search === filterItem.name
+                    ? colors.white
+                    : colors.black1
+                }
                 style={{ textTransform: 'capitalize', marginLeft: '3%' }}
               />
             </View>

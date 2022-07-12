@@ -7,7 +7,7 @@ import Paragraph from '../Paragraph';
 export default function SearchBox() {
   const [text, onChangeText] = useState('');
 
-  const { colors, font } = useContext(Context);
+  const { colors, font, metrics } = useContext(Context);
 
   const searchBoxStyle = StyleSheet.create({
     header: {
@@ -15,7 +15,7 @@ export default function SearchBox() {
       backgroundColor: colors.primary,
       justifyContent: 'center',
       alignItems: 'center',
-      height: '48%',
+      height: metrics.screenHeight / 3.5,
       paddingHorizontal: 22,
     },
     searchBox: {

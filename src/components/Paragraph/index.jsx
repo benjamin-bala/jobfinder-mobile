@@ -2,7 +2,13 @@ import { useContext } from 'react';
 import { Context } from '../../Context';
 import { StyleSheet, Text } from 'react-native';
 
-export default function Paragraph({ fontSize, fontFamily, color, text }) {
+export default function Paragraph({
+  fontSize,
+  fontFamily,
+  color,
+  text,
+  style,
+}) {
   const { font, colors } = useContext(Context);
 
   // console.log(themeProperties);
@@ -18,5 +24,5 @@ export default function Paragraph({ fontSize, fontFamily, color, text }) {
     color: color ? color : colors.black1,
   });
 
-  return <Text style={textStyle}>{text}</Text>;
+  return <Text style={[textStyle, style]}>{text}</Text>;
 }

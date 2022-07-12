@@ -12,11 +12,12 @@ JobFinder is an app that helps developers find their dream jobs at startups arou
 
 ## Technologies i used:
 
-`react native`
+`react native` `expo`
 
 ## Setup
 
 - Download or clone the repository
+- create a `config.js` file using the details from `config.example.js`
 - run `yarn install`
 - run `yarn start`
 - Open Expo Go to view the app.

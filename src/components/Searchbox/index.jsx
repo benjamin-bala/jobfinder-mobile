@@ -5,9 +5,14 @@ import { Context } from '../../Context';
 import Paragraph from '../Paragraph';
 
 export default function SearchBox() {
-  const [text, onChangeText] = useState('');
+  const { colors, font, metrics, state, dispatch } = useContext(Context);
 
-  const { colors, font, metrics } = useContext(Context);
+  const [text, setText] = useState('');
+
+  const onChangeText = (value) => {
+    setText(value);
+    return dispatch({ type: 'filter', payload: value });
+  };
 
   const searchBoxStyle = StyleSheet.create({
     header: {
@@ -36,9 +41,11 @@ export default function SearchBox() {
     },
   });
 
+  console.log('search component', state.search);
+
   return (
     <View style={searchBoxStyle.header}>
-      <StatusBar barStyle={'light-content'} />
+      <StatusBar backgroundColor={colors.primary} barStyle={'light-content'} />
       <View style={searchBoxStyle.paragraph}>
         <Paragraph
           text='Search Your Dream Job Here'

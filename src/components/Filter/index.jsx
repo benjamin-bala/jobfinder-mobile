@@ -1,10 +1,22 @@
-import { useContext } from 'react';
-import { View, Text } from 'react-native';
+import { useContext, useState } from 'react';
+import { View, TouchableWithoutFeedback } from 'react-native';
 import { Context } from '../../Context';
+import { uuid } from '../../utils/uuid';
 import Paragraph from '../Paragraph';
 
 export default function Filter() {
-  const { colors, font } = useContext(Context);
+  const { colors, font, state, dispatch } = useContext(Context);
+  const [value, setValue] = useState('');
+
+  const setFilter = (searchValue) => {
+    if (value === searchValue && value === state?.search) {
+      setValue('');
+      dispatch({ type: 'filter', payload: '' });
+    } else {
+      setValue(searchValue);
+      dispatch({ type: 'filter', payload: searchValue });
+    }
+  };
 
   const filterData = [
     {
@@ -35,30 +47,43 @@ export default function Filter() {
         paddingHorizontal: '5%',
         paddingVertical: '3%',
         borderRadius: 6,
+        flexDirection: 'row',
+        flexWrap: 'wrap',
+        justifyContent: 'center',
       }}
     >
       {filterData.map((filterItem) => {
         return (
-          <View
-            style={{
-              flexDirection: 'row',
-              alignItems: 'center',
-              marginVertical: '1%',
-            }}
+          <TouchableWithoutFeedback
+            key={uuid()}
+            onPress={() => setFilter(filterItem.name)}
           >
-            <Paragraph
-              text={filterItem.symbol}
-              fontSize={font.fontsize.font16}
-              color={colors.black1}
-            />
-            <Paragraph
-              text={filterItem.name}
-              fontSize={font.fontsize.font14}
-              fontFamily={'semibold'}
-              color={colors.black1}
-              style={{ textTransform: 'capitalize', marginLeft: '3%' }}
-            />
-          </View>
+            <View
+              style={{
+                flexDirection: 'row',
+                alignItems: 'center',
+                marginVertical: '1%',
+                backgroundColor:
+                  value === filterItem.name ? colors.primary : 'transparent',
+                alignSelf: 'flex-start',
+                paddingHorizontal: '3%',
+                paddingVertical: '1%',
+                borderRadius: 6,
+              }}
+            >
+              <Paragraph
+                text={filterItem.symbol}
+                fontSize={font.fontsize.font16}
+              />
+              <Paragraph
+                text={filterItem.name}
+                fontSize={font.fontsize.font14}
+                fontFamily={'semibold'}
+                color={value === filterItem.name ? colors.white : colors.black1}
+                style={{ textTransform: 'capitalize', marginLeft: '3%' }}
+              />
+            </View>
+          </TouchableWithoutFeedback>
         );
       })}
     </View>
